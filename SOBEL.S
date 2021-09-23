@@ -9,12 +9,14 @@
             .double   1,1,1,1,1,1,1,1
 
     sobelized:  
-            .double   0,0,0,0,0,0
-            .double   0,0,0,0,0,0
-            .double   0,0,0,0,0,0
-            .double   0,0,0,0,0,0
-            .double   0,0,0,0,0,0
-            .double   0,0,0,0,0,0
+            .double   0,0,0,0,0,0,0,0
+            .double   0,0,0,0,0,0,0,0
+            .double   0,0,0,0,0,0,0,0
+            .double   0,0,0,0,0,0,0,0
+            .double   0,0,0,0,0,0,0,0
+            .double   0,0,0,0,0,0,0,0
+            .double   0,0,0,0,0,0,0,0
+            .double   0,0,0,0,0,0,0,0
 
     filtreGx: 
             .double -1, 0, 1
@@ -29,4 +31,9 @@
 
 
 .text
+    lw r1, img(r0)
+    lw r2, sobelized(r0)
+    lw r3, filtreGx(r0)
+    lw r4, filtreGy(r0)
+
     halt
