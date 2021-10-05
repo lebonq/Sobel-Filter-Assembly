@@ -108,42 +108,37 @@ afterResetCompteur:
 	lw r14, tailleFiltre(r0)
 	daddi r1,r1,#-184 ; pour faire commencer le filtre à la prochaine valeur de l'image (carré)
 	movn r8,r0,r8 ; on remet a 0 le registre de decalage du filtre
+	lw r3, filtreGx(r8) ; met la prochaine valeur du filtreGx
+	lw r4, filtreGy(r8) ; met la prochaine valeur du filtreGy
 	lw r13, tailleSousMatrice(r0) ; on remet à 3 le registre de la taille de la sous matrice
-	
-valeurAbsolueGxX:
-	slti r30,r6,#-1
-	bnez r30,inversementValeurX ;si la valeur est <0 on va à al fonction inversementValeur
 
-valeurAbsolueY:
-	slti r30,r7,#-1
-	bnez r30,inversementValeurY ;si la valeur est <0 on va à al fonction inversementValeur
+	dsra r19,r6,31
+	xor r20,r19,r6
+	dsub r20,r20,r19
 
-calculGradient:
-	dadd r15,r7,r6
-	dsrl r15,r15,#1
+	dsra r21,r7,31
+	xor r22,r21,r7
+	dsub r22,r22,r21
+
+	dadd r15,r22,r20
+	;dsrl r15,r15,#1
 	sw r15,sobelized(r18)
 	daddi r18,r18,#8
 	daddi r16,r16,#-1
-	movn r6,r0,r6;
-	movn r7,r0,r7;
-	movn r15,r0,r15;
+	movn r6,r0,r6 ;
+	movn r7,r0,r7 ;
+	movn r15,r0,r15 ;
+
+	lw r5,img(r1) ; charge la prochaine valeur de l'image
 
 	bnez r16, calculFiltres
 
 	lw r16, tailleSob(r0)
+	daddi r1,r1,#16
 	daddi r18,r18,#16
 	daddi r17,r17,#-1
+	lw r5,img(r1) ; charge la prochaine valeur de l'image
 	
 	bnez r17,calculFiltres
 
 	halt
-
-inversementValeurX: ;Valeur negative devient positive
-	dmult r6, r31 ;multiplication horizontal
-	mflo r6
-	j valeurAbsolueY
-
-inversementValeurY: ;Valeur negative devient positive
-	dmult r7, r31 ; multiplication vertical
-	mflo r7
-	j calculGradient
