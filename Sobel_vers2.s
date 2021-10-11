@@ -60,9 +60,6 @@ compteurligne:
 
 .text
     ;initialisation
-    ;daddi r1, r1, 0
-    ;lw r2, Gx(r0)
-    ;lw r3, Gy(r0)
     daddi r6, r6, #3
     movn r10, r10,r0 ;intialisation r8 a 0
     daddi r12,r12, #3
@@ -71,8 +68,6 @@ compteurligne:
     daddi r21,r21, #6
 
     
-
-
 boucleG:
     lw r2, Gx(r10) ;chargement de la valeur de Gx
     lw r3, Gy(r10) ;chargement de la valeur de Gy
