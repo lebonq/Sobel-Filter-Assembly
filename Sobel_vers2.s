@@ -65,7 +65,6 @@ compteurligne:
     ;lw r3, Gy(r0)
     daddi r6, r6, #3
     movn r10, r10,r0 ;intialisation r8 a 0
-    daddi r11, r11, #64 
     daddi r12,r12, #3
     daddi r19, r19, #36
     movn r20,r20,r0 ;initialisation de r20 à 0
