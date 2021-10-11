@@ -32,11 +32,6 @@ Gy:
 compteurligne:
         .word 3
 
-compteurCalcul:
-        .word 9
-
-huit:
-        .word 8
 
 ;;;;;; Glossaire ;;;;;;
 ; r1: offset pour r1 (72 au début)
@@ -49,7 +44,7 @@ huit:
 ; r8: resultat multiplication Gy
 ; r9: resultat calcul Gy
 ; r10: offset filtre
-; r11: offset sobelized (=64)
+; r11: inutilise
 ; r12: compteur de nbr de ligne matrice (=3)
 ; r13: resultat gradient
 ; r14: regsitre temporaire pour le calcul de la valeur absolue de Gx
