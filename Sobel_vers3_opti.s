@@ -144,23 +144,13 @@ boucleG:
     daddi r20,r20, #8 ;incrementation dans l'offset du sobelized
     
 
-    bnez r6,boucleG
+    bnez r6,boucleG ;si on a pas finis de remplir la ligne sur sobelized
 
     lw r6, compteur(r0) ;remet le compteur a 6
 
     daddi r12,r12,#-1 ;decrementation ligne sobel
     daddi r1,r1,#16 ;on passe a la premiere valeur de la prochaine ligne
-    bnez r12, boucleG 
+    bnez r12, boucleG ;si on a ap finis de remplir toutes les lignes du sobelized
 
     halt
-
-
-
-
-
-
-
-
-
-
 
