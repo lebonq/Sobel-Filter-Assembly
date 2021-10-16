@@ -91,7 +91,7 @@ boucleG:
     dadd r9,r9,r8
     
     bnez r6, boucleG ;si on a pas finis de parcourir toute la ligne
-
+    
     daddi r12, r12, #-1 ;decrementation du compteur nombre de ligne
     daddi r1, r1, #40 ;on passe a la ligne suivante
     lw r6, compteurligne(r0) ;remet le compteur a 3
