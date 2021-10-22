@@ -17,7 +17,6 @@ sobelized:
         .word   0,0,0,0,0,0
         .word   0,0,0,0,0,0
 
-
 Gx: 
 		.word -1, 0, 1
 		.word -2, 0, 2
@@ -31,8 +30,6 @@ Gy:
 
 compteur:
         .word 6
-
-
 
 ;;;;;; Glossaire ;;;;;;
 ; r1: offset pour r1 (72 au début)
@@ -72,7 +69,6 @@ boucleG:
     lw r4, img(r1) ;chargement de l'image (commence à 0)
     dsub r7, r0, r4 ;valeur de Gx (*-1)
     dadd r9,r9,r4 ;valeur de Gy (*1)
-
 
     daddi r1, r1, #8 ;incrementation de l'offset de l'image
     lw r4, img(r1) ;chargement de l'image
