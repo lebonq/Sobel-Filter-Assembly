@@ -77,40 +77,37 @@ boucle2:
 	dsll r8,r8,1
 	dsll r10,r10,1
 
-	;Calcul de Gy
+	;Calcul de Gy et Gx
 	dadd r12,r0,r4
-	dadd r12,r12,r6
-	dadd r12,r12,r5
-	dsub r12,r12,r9
-	dsub r12,r12,r10
-	dsub r12,r12,r11
-
-	;Calcul de Gx
 	dadd r13,r0,r8
+	dadd r12,r12,r6
 	dadd r13,r13,r11
+	dadd r12,r12,r5
 	dadd r13,r13,r6
+	dsub r12,r12,r9
 	dsub r13,r13,r9
+	dsub r12,r12,r10
 	dsub r13,r13,r7
+	dsub r12,r12,r11
 	dsub r13,r13,r4
 
 	;calcul des valeurs absolues
     dsra r14,r12,31
-	xor r15,r14,r12
-	dsub r15,r15,r14
-
-    dsra r16,r13,31
+	dsra r16,r13,31
+	daddi r1,r1,#8 ; on decale le centre de la matrice
+	daddi r3,r3,#-1 ; decremente le nombre de valeru sur la ligne
     xor r17,r16,r13
+	xor r15,r14,r12
+	daddi r2,r2,#-1 ; Decrement ele nombre de valeur traite
     dsub r17,r17,r16
+	dsub r15,r15,r14
 
     ;calcul du gradient final
     dadd r14,r15,r17 ;somme des valeurs absolues
 	;On store le resultat
 	sw r14,sobelized(r18)
-
-	daddi r3,r3,#-1
-	daddi r1,r1,#8
+	
 	daddi r18,r18,#8
-	daddi r2,r2,#-1
 	
 	bnez r3,boucle2
 	daddi r1,r1,#16
